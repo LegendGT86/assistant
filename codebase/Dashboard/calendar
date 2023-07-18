@@ -1,0 +1,22 @@
+import random
+import datetime
+
+#display current date
+#print(datetime.today())
+def special_days(active_user_email):
+        output_word = ''
+        quotes = ['Success is not final; failure is not fatal: it is the courage to continue that counts','Play by the rules, but be ferocious',
+                  'Business opportunities are like buses, there’s always another one coming','Every problem is a gift—without problems we would not grow',
+                  'Success usually comes to those who are too busy to be looking for it','And the day came when the risk to remain tight in a bud was more painful than the risk it took to blossom',
+                 'There’s no shortage of remarkable ideas, what’s missing is the will to execute them','I don’t know the word ‘quit.’ Either I never did, or I have abolished it',
+                 'Far and away the best prize that life offers is the chance to work hard at work worth doing']
+        user_bdate = user_list[active_user_email][2]
+        date_time_obj = datetime.datetime.strptime(user_bdate, '%Y-%m-%d')
+        date_dist = datetime.date.today() - date_time_obj.date()
+        output_word = ''
+
+        if date_dist%365 == 0:
+            output_word = f'Happy Birthday {home_page.active_user_name}'
+        else:
+            output_word = f'Todays quote: {random.choice(quotes)}'  
+        return output_word

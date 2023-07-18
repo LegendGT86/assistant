@@ -1,0 +1,16 @@
+    def dashboard():
+    curr_date = datetime.date.today()
+        print ( f'Goodday {active_user_name} on this fine {curr_date} , here is todays financial indexes:')
+
+        for i in range(10):
+        clear_output(wait=True)
+        print(i, flush=True)
+
+    
+    if __name__ == "__main__":
+
+        log_in()
+        action_required()
+#         system('cls')
+        special_days(active_user_email)
+        dashboard()

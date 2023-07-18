@@ -1,0 +1,100 @@
+import re
+import datetime
+import tkinter as tk
+from PIL import ImageTk, Image
+user_list = {}
+
+class user_profile():
+    def sign_up():
+        new_email = entry1.get()
+        new_pw = entry2.get()
+# Confirm that email does not exist on system
+        if not new_email or not new_pw:
+            error_label.config(text ='All fields are required please')
+        elif new_email in user_list:
+            error_label.config(text = 'That email address already exists')
+        else:
+            error_label.config(text ='')
+#confirm password meets criteria
+        if len(new_pw) < 8:
+            error_label.config(text='Password must be atleast 8 characters long')
+        elif not re.search(r"\d",new_pw):
+            error_label.config(text='Password must contain atleast 1 digit')
+        elif not re.search(r"[A-Z]",new_pw):
+            error_label.config(text='Password must contain atleast 1 Uppercase letter')
+        elif not re.search(r"[a-z]",new_pw):
+            error_label.config(text='Password must contain atleast 1 Lowercase letter')
+        else:
+            error_label.config(text ='')
+                # window.destroy()                  
+
+# Window
+window = tk.Tk()
+header_label = tk.Label(window,text="Sign up",font=("Arial",18,"bold"))
+subheader_label = tk.Label(window,text="lets get you started",font=("Arial",18,"bold"))
+image = tk.PhotoImage(file="C:\Users\dmath\Desktop\Desk_repo\Daily_assistant\Dashboard\Background.png")
+background_image = ImageTk.PhotoImage(image)
+
+# Create a label with the image
+background_label = tk.Label(window, image=background_image)
+background_label.place(x=0, y=0, relwidth=1, relheight=1)
+
+# email input
+entry1 = tk.Entry(window)
+entry1.pack()
+
+# password input
+entry2 = tk.Entry(window)
+entry2.pack()
+
+# Create a validation error label
+error_label = tk.Label(window, fg="red")
+error_label.pack()
+
+# Create a submit button
+submit_button = tk.Button(window, text="Submit", command=user_profile.sign_up)
+submit_button.place(x=50, y=50)
+# submit_button.pack()
+cancel_button = tk.Button(window, text="Cancel", command=window.destroy)
+cancel_button.place(x=100, y=50)
+
+window.mainloop()
+
+    # new_dob = input('please enter your date of birth in the format yyyy-mm-dd: ')
+    #     formatted_dob = datetime.datetime.strptime(new_dob, '%Y-%m-%d')
+    #     user_list[temp_email_storage] = new_name,temp_pw,formatted_dob
+    #     print(f'Thank you {new_name}, you are now ready to login')
+  
+    # def log_in():
+    #     email_given = entry.get()
+    #     pattern = r'^[\w\.-]+@[\w\.-]+\.\w+$'
+    #     if not re.match(pattern,email_given):
+    #         error_label.config(text="Please enter a valid email address")      
+    #     elif email_given not in user_list.keys() :
+    #             error_label.config(text="your email address cannot be found on our systems, please try again")
+    #     elif email_given in user_list.keys():
+    #         return email_given
+                    
+    #     elif email_given in user_list.keys():
+    #         while True:
+    #             login_pw = getpass.getpass('Password please: ')
+    #             if login_pw == user_list[email_given][1]:
+    #                 print ('confirmed password')
+    #                 return email_given
+    #                 break
+    #             elif login_pw != user_list[email_given][1]:
+    #                 print( 'Sorry, that password is incorrect')
+    #      from IPython.display import clear_output
+    # active_user_email = ''
+    # active_user_name = ''
+    # curr_date = datetime.date.today()
+    
+                        
+    # def edit_acc(email_address):
+    #     detail_to_amend = input ('If you would like to change details, please select an option below \n 1 - name \n 2 - password \n 3 - date of birth').lower()
+    #     if detail_to_amend == '1':
+    #         userlist[email_address][0] = input('enter your first name').lower().capitalize()
+    #     elif detail_to_amend == '2':
+    #         userlist[email_address][1] = input('enter your new password').lower()
+    #     elif detail_to_amend == '3':
+    #         userlist[email_address][2] = input('enter your date of birth in the format YYYY-MM-DD')
