@@ -1,7 +1,7 @@
-from django.urls import path
-
+from django.urls import path, re_path, include
 from . import views
 
 urlpatterns = [
-    path("",views.index,name="index"),
+    path("", views.index, name="index"),
+    re_path(r'^rest-auth/', include('rest_auth.urls'))
 ]
